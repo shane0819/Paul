@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <script>
+      function sendMessage() {
+        fetch("https://script.google.com/a/macros/yh.tp.edu.tw/s/AKfycbzj9peki7FGe09XCiJCiPXMGvkTZiD7LjrO5PH88i8/dev?secret=11301033", { method: "GET" })
+          .then(response => alert("Message sent!"))
+          .catch(error => alert("Error: " + error));
+      }
+    </script>
+  </head>
   <body>
     <h1>Hello.</h1>
+    <button onclick="sendMessage()"></button>
   </body>
 </html>
