@@ -1,16 +1,23 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <script>
-      function sendMessage() {
-        fetch("https://script.google.com/a/macros/yh.tp.edu.tw/s/AKfycbwJ6yz2QGVS2cae6Y3H2gMgCjBszhZpKvIPyyzgd6_9iD8VEaFPh1EIHTabfaeyYP30/exec?secret=11301033", { method: "GET" })
-          .then(response => alert("Message sent!"))
-          .catch(error => alert("Error: " + error));
-      }
-    </script>
-  </head>
-  <body>
-    <h1>Hello.</h1>
-    <button onclick="sendMessage()"></button>
-  </body>
+<head>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+	<script>
+		function send() {
+			var a = window.open("https://script.google.com/macros/s/AKfycbwsHuL8BH21NoQCTN4kiaqoJ2MDPr31XoG7V6kPDDqOpuUkPXNeaePpT-X1etlxuSom/exec?paulMsg=" + encodeURI(document.getElementById("msg").value));
+
+			setTimeout(function() {
+				a.close();
+				document.getElementById("msg").value = "";
+			}, 500);
+		}
+	</script>
+</head>
+<body style="overflow: hidden;">
+	<img src="https://i.imgur.com/wHj0Bty.jpeg" style="height: 95vh; position: absolute; left: 50vw; top: 50vh; transform: translate(-50%, -50%);">
+	<textarea id="msg" style="width: 20vh; height: 10vh; font-size: 2.5vh; font-weight: 500; font-family: Roboto; color: black; background-color: #f9f4df; border: none; outline: none; position: absolute; left: 50vw; top: 10vh; transform: translateX(-6vh); resize: none;"></textarea>
+	<button style="border: none; border-radius: 1vh; padding: 1.8vh 3vh 1.8vh 3vh; background-color: #1a73e8; color: white; font-size: 2.5vh; font-weight: 500; font-family: Roboto; position: absolute; left: 50vw; bottom: 26vh; transform: translate(-19vh); cursor: pointer;" onclick="send()">Speak</button>
+</body>
 </html>
