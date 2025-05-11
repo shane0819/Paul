@@ -1,7 +1,7 @@
 {
-  "name": "我的PWA範例",
-  "short_name": "PWA範例",
-  "start_url": "/index.html",
+  "name": "Paul",
+  "short_name": "Paul",
+  "start_url": "index.html",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#000000",
