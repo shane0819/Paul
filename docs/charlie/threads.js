@@ -109,6 +109,7 @@ var htmlText = `<!DOCTYPE html>
 
 document.addEventListener("DOMContentLoaded", function() {
 	var charlie = prompt("透過 Threads 暢所欲言。");
-	var threads = window.open();
-	threads.document.write(htmlText.replaceAll("阿你是可以刪了沒 不要裝死", charlie));
+	// var threads = window.open();
+	// threads.document.write(htmlText.replaceAll("阿你是可以刪了沒 不要裝死", charlie));
+	document.getElementsByTagName("html")[0].innerHTML = htmlText.replaceAll("阿你是可以刪了沒 不要裝死", charlie);
 });
