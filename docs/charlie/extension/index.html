@@ -6,34 +6,30 @@
                 document.getElementsByTagName("a").href = `
                 
         javascript:console.log("dfsdfasdfas");
-    var TEXT = '何承祐喜歡吳宜臻　';
-    Array.prototype.slice.call(document.querySelectorAll('input[type="text"], textarea')).forEach(function(el) {
-        el.onkeypress = function(evt) {
-            var charCode = typeof evt.which === 'number' ? evt.which : evt.keyCode;
-            if (charCode && charCode > 31) {
-                var start = this.selectionStart;
-                var end = this.selectionEnd;
-                this.value = this.value.slice(0, start) + TEXT[start % TEXT.length] + this.value.slice(end);
-                this.selectionStart = this.selectionEnd = start + 1;
-            }
-            return false;
-        };
-    });
-    chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
-        if (message.action === "toggle") {
-            alert("f");
-        }
-        alert("yay");
-    });
-snow("宜", "red");
-snow("臻", "orange");
-snow("承", "green");
-snow("祐", "blue");
-snow("❤️", "black");
 
-    function snow (letter, color) {
-    var letter = letter;
-    var color = color;
+var TEXT = '何承祐喜歡吳宜臻　';
+
+Array.prototype.slice.call(document.querySelectorAll('input[type="text"], textarea')).forEach(function(el) {
+    el.onkeypress = function(evt) {
+        var charCode = typeof evt.which === 'number' ? evt.which : evt.keyCode;
+        if (charCode && charCode > 31) {
+            var start = this.selectionStart;
+            var end = this.selectionEnd;
+            this.value = this.value.slice(0, start) + TEXT[start % TEXT.length] + this.value.slice(end);
+            this.selectionStart = this.selectionEnd = start + 1;
+        }
+        return false;
+    };
+});
+
+chrome.runtime?.onMessage?.addListener(function(message, sender, sendResponse) {
+    if (message.action === "toggle") {
+        alert("f");
+    }
+    alert("yay");
+});
+
+function snow(letter, color) {
     var container = document.createElement('div');
     document.body.appendChild(container);
     container.style.position = 'fixed';
@@ -44,18 +40,20 @@ snow("❤️", "black");
     container.style.overflow = 'hidden';
     container.style.pointerEvents = 'none';
 
-    function init() {
-        var injection = document.createElement('style');
-        document.body.appendChild(injection);
-        injection.innerHTML = '@-webkit-keyframes snow {\nfrom {top:-1%;}\nto{top:121%;}}\n@-moz-keyframes snow {\nfrom {top: -1%;}\nto {top: 121%;}\n}';
-    }
-    init();
-    window.setInterval(createParticle, 200);
-    timeChoices = [5, 6, 7, 8, 9, 10];
+    var injection = document.createElement('style');
+    document.body.appendChild(injection);
+    injection.innerHTML = `
+        @-webkit-keyframes snow {
+            from {top: -1%;}
+            to {top: 121%;}
+        }
+        @-moz-keyframes snow {
+            from {top: -1%;}
+            to {top: 121%;}
+        }
+    `;
 
-    function destroy(evt) {
-        container.removeChild(evt.target);
-    }
+    var timeChoices = [5, 6, 7, 8, 9, 10];
 
     function createParticle() {
         var particle = document.createElement('span');
@@ -72,9 +70,20 @@ snow("❤️", "black");
         particle.style.borderRadius = '50%';
         particle.style.WebkitAnimation = 'snow ' + randomSpeed + 's linear';
         container.appendChild(particle);
-        particle.addEventListener('webkitAnimationEnd', destroy);
+        particle.addEventListener('webkitAnimationEnd', function() {
+            container.removeChild(particle);
+        });
     }
+
+    setInterval(createParticle, 200);
 }
+
+// Start the snowfall
+snow("宜", "red");
+snow("臻", "orange");
+snow("承", "green");
+snow("祐", "blue");
+snow("❤️", "black");
 
         `;
         </script>
