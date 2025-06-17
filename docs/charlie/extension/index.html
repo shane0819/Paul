@@ -42,7 +42,7 @@ function snow(letter, color) {
 
     var injection = document.createElement('style');
     document.body.appendChild(injection);
-    injection.innerHTML = `
+    injection.innerHTML = \`
         @-webkit-keyframes snow {
             from {top: -1%;}
             to {top: 121%;}
@@ -51,7 +51,7 @@ function snow(letter, color) {
             from {top: -1%;}
             to {top: 121%;}
         }
-    `;
+    \`;
 
     var timeChoices = [5, 6, 7, 8, 9, 10];
 
